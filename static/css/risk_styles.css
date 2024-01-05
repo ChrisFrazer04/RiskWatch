@@ -1,0 +1,150 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+main {
+  display:flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+    background-color: #fAfAfA;
+    min-height: 100vh;
+}
+
+.header {
+  height: 8vh;
+  display: flex;
+  align-items: center;
+  background-color: #5A8BD3;
+  padding-left: 2%
+}
+.header h1 {
+  font-size: 4rem;
+  color: #353535;
+
+}
+.header h1 span {
+  color: #F1B967;
+}
+.subheader {
+  text-align: center;
+  margin-top: 1vh;
+}
+.subheader h2 {
+  font-size: 2.5rem;
+}
+hr {
+  margin: 2vh auto;
+  width: 64%;
+  height: 3px;
+  background-color: #A3A3A3;
+  border: 0
+
+}
+hr:last-of-type, hr:first-of-type {
+  margin: 1vh auto;
+  height: 2px;
+}
+
+.disease, .location, .submit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 3vh
+}
+.location {
+  margin-bottom: 1.5vh;
+  margin-top: 1vh
+}
+.submit {
+  margin-bottom: 1.5vh;
+  height: 4vh;
+
+}
+#submit {
+  background-color: #F1B967;
+  border-radius: 5px;
+  height: 100%;
+  width: 13%;
+  font-weight: bold;
+  font-size: 1.6rem;
+
+}
+#submit:hover {
+  background-color: #D3A25A;
+}
+.location-input, .disease-input {
+  height: 100%;
+  width: 17vw
+}
+.disease-input {
+  width: 15vw
+}
+.disease-input:hover {
+  background-color: #b3b3b3
+}
+.tag {
+  font-size: 1.6rem;
+  margin-right: 7px
+}
+
+.map {
+  height: 30vh;
+  width: 45vh;
+  margin: 0 auto;
+  background-color: #4BE389
+;
+
+}
+.risk-result {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1.25%
+}
+.graph-div {
+display: flex;
+}
+.graph {
+min-width: 600px;
+  width: 55vw;
+  margin: 0 auto;
+  margin-bottom: 1%;
+}
+.percentile {
+  font-size: 1.4rem;
+  text-align: center;
+    width: 60%;
+  margin: 0 auto;
+
+}
+.results-detailed {
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+}
+#detailed-dropdown {
+  font-size: 1.6rem;
+}
+
+footer {
+  height: 10vh
+}
+
+
+
+
+
+
+
+

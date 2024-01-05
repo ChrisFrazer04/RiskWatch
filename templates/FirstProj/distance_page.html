@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Distance Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/distance.css' %}">
+</head>
+<body>
+<h1>Find the Distance Between Two Locations!</h1>
+<form method='post' action="">
+    {% csrf_token %}
+    {{form }}
+    <input type="submit" value="Submit">
+<!--<fieldset class="input-block">
+    <div class="txt-input"><label for="location1">Location 1:</label><input type="text" id="location1"></div>
+    <div class="txt-input"><label for="location2">Location 2:</label><input type="text" id="location2"></div>
+    <input type="submit">
+</fieldset> -->
+</form>
+<h2>{{ text }}</h2>
+</body>
+</html>

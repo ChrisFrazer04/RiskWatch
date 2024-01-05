@@ -1,0 +1,57 @@
+{% load static %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <title>RiskWatch: Disease Calculator</title>
+	<link rel="stylesheet" type='text/css' href="{% static 'css/risk_styles.css' %}">
+</head>
+
+<body>
+  <main id='site-background'>
+    <div class='header'>
+      <h1>
+        Risk<span>Watch</span>
+      </h1>
+    </div>
+    <div class='subheader'>
+      <h2>
+        Discover the Risk of Disease Worldwide
+      </h2>
+    </div>
+    <hr>
+    <form class='inputs' method="post" action="">
+      {% csrf_token %}
+      <div class='disease'>
+        <label class='tag'>Disease: </label>
+        {% render_field form.dropdown class+="disease-input" %}
+      </div>
+      <div class='location'>
+        <label class='tag'>Location: </label>
+        {% render_field form.location class+="location-input" placeholder+="Location: " %}
+      </div>
+      <div class='submit'>
+        <input type="submit" value="Calculate" id='submit'>
+      </div>
+      <div class='map' id='map'><script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script></div>
+    </form>
+    <hr>
+    <section class='results-main'>
+    <div class='risk-result'><p>{{ risk }}</p></div>
+      <!--old div: <div class='graph' id='graph'></div>  -->
+      <div class="graph-div"><img src='data:image/png;base64,{{ graph }}' class='graph' id='graph' alt="Graph of incidence rates by country"></div>
+      <p class='percentile'>{{ text }}</p>
+    </section>
+    <hr>
+    <section class='results-detailed'>
+      <p id='detailed-dropdown'>
+        Detailed Analysis:
+      </p>
+      <p id='factors'>{{ factors }}</p>
+    </section>
+  </main>
+
+</body>
+</html>

@@ -1,0 +1,7 @@
+1. change directory to DjangoProjects
+2. venv/Scripts/activate
+3. pip install Django
+4. pip install django-debug-toolbar
+5. pip install django-extensions
+
+If any more extensions are added, you must install those on startup
