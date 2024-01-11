@@ -22,36 +22,35 @@
       </h2>
     </div>
     <hr>
-    <form class='inputs' method="post" action="">
+    <form class='inputs' method="post" action="" id="submit-form">
       {% csrf_token %}
       <div class='disease'>
         <label class='tag'>Disease: </label>
         {% render_field form.dropdown class+="disease-input" %}
       </div>
       <div class='location'>
-        <label class='tag'>Location: </label>
-        {% render_field form.location class+="location-input" placeholder+="Location: " %}
+        <label class='tag'>Select a location: </label>
+        {% render_field form.location class+="location-input" id="location-input" placeholder+="Location: " %}
       </div>
+      <div class='map' id='map'><script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkqT5NcD8JHNfdPqy2iVWqkLDv9Kl208A&callback=initMap"></script></div>
       <div class='submit'>
-        <input type="submit" value="Calculate" id='submit'>
+        <input type="submit" value="Calculate" id='submitButton'>
       </div>
-      <div class='map' id='map'><script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script></div>
     </form>
     <hr>
     <section class='results-main'>
-    <div class='risk-result'><p>{{ risk }}</p></div>
+    <div class='risk-result' id="risk-result"><p>{{ risk }}</p></div>
       <!--old div: <div class='graph' id='graph'></div>  -->
-      <div class="graph-div"><img src='data:image/png;base64,{{ graph }}' class='graph' id='graph' alt="Graph of incidence rates by country"></div>
+      <div class="graph-div" id="graph-div"><img src='data:image/png;base64,{{ graph }}' class='graph' id='graph'></div>
       <p class='percentile'>{{ text }}</p>
     </section>
-    <hr>
-    <section class='results-detailed'>
+    <section class='results-detailed' id="results-detailed">
       <p id='detailed-dropdown'>
         Detailed Analysis:
       </p>
       <p id='factors'>{{ factors }}</p>
     </section>
   </main>
-
+  <script src="{% static 'js/risk_js.js' %}"></script>
 </body>
 </html>

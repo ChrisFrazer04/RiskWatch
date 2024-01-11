@@ -108,6 +108,9 @@ class Risk_Calculator(TemplateView):
     return results
 
   def hospital_density(self, location, disease):
+    """
+    Takes a location and a disease, finding the density of hospitals around it.
+    """
     small_rad = 2000
     medium_rad = 4000
     large_rad = 6000
@@ -116,6 +119,7 @@ class Risk_Calculator(TemplateView):
     small = maps.search_nearby(location=location, radius_meters=small_rad, type='hospital')
     country = small['country']
     supported = self.check_supported(disease, country)
+    #If the disease/country combo is inside of the database
     if supported == True:
       medium = maps.search_nearby(location=location, radius_meters=medium_rad, type='hospital')
       large = maps.search_nearby(location=location, radius_meters=large_rad, type='hospital')
@@ -124,6 +128,7 @@ class Risk_Calculator(TemplateView):
       densities['large'] = large['density']
       densities['country'] = small['country']
       return densities
+    #Runs if the disease/country combo is not in the database
     else:
       results = dict()
       results['text'] = supported
@@ -131,6 +136,7 @@ class Risk_Calculator(TemplateView):
       return results
 
   def get_median(self, nums):
+    """Finds the median of a list of numbers (Try to replace w/ numpy)"""
     length = len(nums)
     if length / 2 == round(length / 2):
       median_index1 = round(length / 2)
@@ -142,6 +148,7 @@ class Risk_Calculator(TemplateView):
     return median
 
   def nonzero_list(self, nums):
+    """Takes a list of values and returns """
     nums.sort()
     for num in nums:
       if num > 0:
@@ -168,6 +175,7 @@ class Risk_Calculator(TemplateView):
       return value_text
 
   def get_graph(self, queryset, disease):
+    """Creates a graph """
     plt.style.use('ggplot')
     qs = BaselineData.objects.filter(Q(disease=queryset) & Q(incidence__gt=0)).values()
     df = read_frame(qs, fieldnames=['country_name', 'incidence'])

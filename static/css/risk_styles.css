@@ -70,7 +70,7 @@ hr:last-of-type, hr:first-of-type {
   height: 4vh;
 
 }
-#submit {
+#submitButton {
   background-color: #F1B967;
   border-radius: 5px;
   height: 100%;
@@ -79,12 +79,15 @@ hr:last-of-type, hr:first-of-type {
   font-size: 1.6rem;
 
 }
-#submit:hover {
+#submitButton:hover {
   background-color: #D3A25A;
 }
-.location-input, .disease-input {
+#location-input, .disease-input {
   height: 100%;
   width: 17vw
+}
+#location-input {
+display: none
 }
 .disease-input {
   width: 15vw
@@ -97,11 +100,11 @@ hr:last-of-type, hr:first-of-type {
   margin-right: 7px
 }
 
-.map {
-  height: 30vh;
-  width: 45vh;
+#map {
+  height: 45vh;
+  width: 60vh;
   margin: 0 auto;
-  background-color: #4BE389
+  margin-bottom: 2vh;
 ;
 
 }
@@ -109,10 +112,11 @@ hr:last-of-type, hr:first-of-type {
   text-align: center;
   font-size: 2rem;
   font-weight: bold;
-  margin-bottom: 1.25%
+  margin-bottom: 1.25%;
+  display: none;
 }
 .graph-div {
-display: flex;
+display: none;
 }
 .graph {
 min-width: 600px;
@@ -123,12 +127,12 @@ min-width: 600px;
 .percentile {
   font-size: 1.4rem;
   text-align: center;
-    width: 60%;
+  width: 60%;
   margin: 0 auto;
 
 }
 .results-detailed {
-display: flex;
+display: none;
 justify-content: center;
 align-items: center;
 flex-direction: column;
