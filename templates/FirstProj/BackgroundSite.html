@@ -32,7 +32,7 @@
         <label class='tag'>Select a location: </label>
         {% render_field form.location class+="location-input" id="location-input" placeholder+="Location: " %}
       </div>
-      <div class='map' id='map'><script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkqT5NcD8JHNfdPqy2iVWqkLDv9Kl208A&callback=initMap"></script></div>
+      <div class='map' id='map'><script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkqT5NcD8JHNfdPqy2iVWqkLDv9Kl208A&callback=initMap" id="mapScript"></script></div>
       <div class='submit'>
         <input type="submit" value="Calculate" id='submitButton'>
       </div>
@@ -49,6 +49,8 @@
         Detailed Analysis:
       </p>
       <p id='factors'>{{ factors }}</p>
+      <!--This p element is updated once post data received, when inner text == 'show', hidden divs are shown -->
+      <p id="hidden">{{ show }}</p>
     </section>
   </main>
   <script src="{% static 'js/risk_js.js' %}"></script>

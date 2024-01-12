@@ -1,3 +1,4 @@
+/*For all elements*/
 * {
   box-sizing: border-box;
   padding: 0;
@@ -9,6 +10,7 @@ html {
   font-size: 62.5%;
 }
 
+/*Behavior of site background*/
 main {
   display:flex;
   flex-direction: column;
@@ -20,6 +22,7 @@ main {
     min-height: 100vh;
 }
 
+/*Controls page header box*/
 .header {
   height: 8vh;
   display: flex;
@@ -42,6 +45,8 @@ main {
 .subheader h2 {
   font-size: 2.5rem;
 }
+
+/*Controls horizontal lines (page breaks) */
 hr {
   margin: 2vh auto;
   width: 64%;
@@ -55,6 +60,7 @@ hr:last-of-type, hr:first-of-type {
   height: 2px;
 }
 
+/*Deals with behavior of disease input box, submit box, location header text*/
 .disease, .location, .submit {
   display: flex;
   justify-content: center;
@@ -68,7 +74,6 @@ hr:last-of-type, hr:first-of-type {
 .submit {
   margin-bottom: 1.5vh;
   height: 4vh;
-
 }
 #submitButton {
   background-color: #F1B967;
@@ -77,7 +82,6 @@ hr:last-of-type, hr:first-of-type {
   width: 13%;
   font-weight: bold;
   font-size: 1.6rem;
-
 }
 #submitButton:hover {
   background-color: #D3A25A;
@@ -100,14 +104,16 @@ display: none
   margin-right: 7px
 }
 
+/*Controls google map size/dimensions*/
 #map {
   height: 45vh;
   width: 60vh;
   margin: 0 auto;
   margin-bottom: 2vh;
-;
-
+  border: 2px solid #000;
 }
+
+/*Controls the graph and risk result text*/
 .risk-result {
   text-align: center;
   font-size: 2rem;
@@ -117,12 +123,17 @@ display: none
 }
 .graph-div {
 display: none;
+border: 4px solid 'black';
 }
 .graph {
 min-width: 600px;
   width: 55vw;
   margin: 0 auto;
   margin-bottom: 1%;
+  background-color: '#abfeda';
+  height: 55vh;
+  display: none;
+  border: 2px solid #000;
 }
 .percentile {
   font-size: 1.4rem;
@@ -141,6 +152,7 @@ flex-direction: column;
   font-size: 1.6rem;
 }
 
+/*Footer */
 footer {
   height: 10vh
 }

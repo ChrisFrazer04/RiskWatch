@@ -5,6 +5,13 @@ var graphDiv = document.getElementById('graph-div');
 var resultText = document.getElementById('risk-result');
 var resultBox = document.getElementById('Risk')
 var locationInput = document.getElementById('location-input')
+var hidden = document.getElementById('hidden')
+var mapScript = document.getElementById('mapScript')
+
+//Insert maps API key (In progress)
+//mapScript.addEventListener('DOMContentLoaded', function () {
+//  mapScript.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyAkqT5NcD8JHNfdPqy2iVWqkLDv9Kl208A&callback=initMap"
+//});
 //Functions
 function showHidden() {
   graph.style.display = 'flex'
@@ -56,7 +63,12 @@ function submitMarkerPosition(latLng) {
   locationInput.value = locale
 }
 
-//document.addEventListener('DOMContentLoaded', submitFunction);
+//Actionable Code
+if (hidden.innerText == 'show') {
+  console.log('Showing hidden');
+  showHidden();
+};
+
 
 // Call the initMap function when the Google Maps API is loaded. Should be last line of code
 google.maps.event.addDomListener(window, 'load', initMap);

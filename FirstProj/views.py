@@ -47,13 +47,14 @@ class Risk_Calculator(TemplateView):
         text = results['text']
         risk = results['risk']
         graph = results['graph']
+        address = hospital['address']
       except:
         country = hospital['country_name']
         risk = 'Locations in {} are currently not supported for {}.'.format(country, disease_real)
         text = 'Supported countries include: {}'.format(hospital['text'])
       try:
         factors = results['factors']
-        args = {'form':form, 'text':text, 'risk':risk, 'factors': factors, 'graph': graph}
+        args = {'form':form, 'text':text, 'risk':risk, 'factors': factors, 'graph': graph, 'show': 'show'}
       except:
         args = {'form': form, 'text': text, 'risk': risk}
 
@@ -127,6 +128,7 @@ class Risk_Calculator(TemplateView):
       densities['medium'] = medium['density']
       densities['large'] = large['density']
       densities['country'] = small['country']
+      densities['address'] = small['address']
       return densities
     #Runs if the disease/country combo is not in the database
     else:

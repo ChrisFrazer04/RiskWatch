@@ -13,12 +13,13 @@ class gapi_request:
     def make_request_gmaps(self, address):
         params = {}
         params['key'] = self.api_key
-        params['address'] = address
+        params['latlng'] = address
         self.enc_params = urllib.parse.urlencode(params)
         url = self.serviceurl + self.enc_params
         response = requests.get(url)
         self.rawjs = response.json()
         self.text = json.dumps(self.rawjs, indent=4)
+        return self.text
 
     def get_stats(self):
         data = self.rawjs
@@ -60,10 +61,13 @@ class gapi_request:
         lat = data['geometry']['location']['lat']
         lng = data['geometry']['location']['lng']
         return str(lat) + ',' + str(lng)
-    def get_country(self):
+    def get_address(self):
+        """Returns the country name and formatted address"""
         locale = self.get_stats()
-        country = locale['country_data']['long_name']
-        return country
+        results = {}
+        results['country'] = locale['country_data']['long_name']
+        results['address'] = locale['address']
+        return results
     def calc_distance(self, address, target):
         self.make_request_gmaps(address)
         var_name = self.another('var_name')
@@ -94,11 +98,11 @@ class gapi_request:
     def search_nearby(self, location, radius_meters, type, keyword=None):
         #https://developers.google.com/maps/documentation/places/web-service/search-nearby#maps_http_places_nearbysearch-py
         self.make_request_gmaps(location)
-        location2 = self.get_coordinates_text()
-        country = self.get_country()
+        #location2 = self.get_coordinates_text()
+        location_data = self.get_address()
         serviceurl = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?'
         params = {}
-        params['location'] = location2
+        params['location'] = location
         params['key'] = self.api_key
         params['radius'] = radius_meters
         params['type'] = type
@@ -113,7 +117,8 @@ class gapi_request:
         density = count*1000/radius_meters
         values = dict()
         values['density'] = density
-        values['country'] = country
+        values['country'] = location_data['country']
+        values['address'] = location_data['address']
         return values
 
 
