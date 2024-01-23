@@ -82,7 +82,7 @@ class sql_req(api_request):
     def connect(self, name=''):
         if name == '':
             global conn
-            conn = sqlite3.connect('WHO_API_DB.sqlite')
+            conn = sqlite3.connect('C:\\Users\\cflor\\PycharmProjects\\FCC\\WHO_API_DB.sqlite')
             #conn = sqlite3.connect(input('Input Database file') + '.sqlite')
             global cur
             self.cur = conn.cursor()
@@ -148,8 +148,8 @@ class Table(sql_req):
                     name TEXT ,
                     IndicatorCode TEXT UNIQUE)'''.format(self.name)
         cur.execute(cmd)
-        cstrtxt = '{}:name, IndicatorCode'.format(self.name)
-        cstrlist.append(cstrtxt)
+        #cstrtxt = '{}:name, IndicatorCode'.format(self.name)
+        #cstrlist.append(cstrtxt)
     def execute(self, comm):
         cur.execute(comm)
         return

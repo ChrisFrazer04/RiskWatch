@@ -4,7 +4,9 @@ from django.db import models
 class Country(models.Model):
     country_name = models.CharField(max_length=200)
     country_code = models.CharField(max_length = 4)
-    population = models.IntegerField()
+    pop2020 = models.IntegerField()
+    pop2021 = models.IntegerField()
+    pop2022 = models.IntegerField()
 
     def __str__(self):
         return self.country_name
@@ -27,7 +29,12 @@ class BaselineData(models.Model):
     disease = models.ForeignKey(Disease, on_delete=models.CASCADE)
     country_code = models.CharField(max_length=5)
     country_name = models.CharField(max_length=50)
-    incidence = models.FloatField()
+    incidence_2020 = models.FloatField(null=True)
+    incidence_2021 = models.FloatField(null=True)
+    incidence_2022 = models.FloatField(null=True)
+
+
+
     def __str__(self):
         return self.country_name
 

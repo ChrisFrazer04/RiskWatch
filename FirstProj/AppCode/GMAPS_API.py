@@ -22,9 +22,18 @@ class gapi_request:
         return self.text
 
     def get_stats(self):
-        data = self.rawjs
+        dta = self.rawjs
         stats = {}
-        data = data['results'][0]
+        try:
+            data = dta['results'][0]
+            for thing in data['address_components']:
+                for item in thing['types']:
+                    if item == 'country':
+                        stats['country_data'] = thing
+            tst = stats['country_data']
+            stats = {}
+        except:
+            data = dta['results'][1]
         lat = data['geometry']['location']['lat']
         lng = data['geometry']['location']['lng']
         coordinates = list()
@@ -120,6 +129,5 @@ class gapi_request:
         values['country'] = location_data['country']
         values['address'] = location_data['address']
         return values
-
 
 

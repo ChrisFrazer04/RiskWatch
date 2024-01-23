@@ -1,20 +1,19 @@
 from FirstProj.models import Country
 import sqlite3
+import pandas as pd
+import os
 
-def run():
-    conn = sqlite3.connect('C:\\Users\\cflor\\PycharmProjects\\FCC\\WHO_API_DB.sqlite')
-    cur = conn.cursor()
-    cur.execute('SELECT name, code, population FROM country_migration')
-    data = cur.fetchall()
-    conn.close()
-    for item in data:
-        name = item[0]
-        code = item[1]
-        population = item[2]
-        entry = Country(country_name=name, country_code=code, population=population)
-        entry.save()
+def insert_row(row):
+    """Inserts the data from each dataframe row into the Country model/DB"""
+    item = Country(country_name=row['country_name'], country_code=row['country_code'],
+                   pop2020=row['pop2020'], pop2021=row['pop2021'], pop2022=row['pop2022'])
+    item.save()
     print(Country.objects.all())
-    #conn = sqlite3.connect('C:\\Users\\cflor\\PycharmProjects\\DjangoProject\\db.sqlite3')
-    #cur = conn.cursor()
+def run():
+    """Points to the data csv file and runs insert_row"""
+    data = pd.read_csv('C:\\Users\\cflor\\PycharmProjects\\RiskWatch\\Spreadsheets\\pop_2020-2022.csv')
+    data.apply(insert_row, axis=1)
+    #print(Country.objects.all())
+
 
 
