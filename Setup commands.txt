@@ -14,8 +14,15 @@ If any more extensions/packages are added, you must install those on startup
 
 
 To do:
-1. Pretty up the website. Add borders to the map, refine the graph style and presentation format, and whatever else
+2. Figure out graph dimensions
+3. Make a dropdown for detailed results
+    - Add something like "Your location has a lack of access to medical facilities"
+
+4. Add a "Learn More:" line to bottom of dropdown, link to a WHO website for the disease
+5.
+
 2. Host website on a server (lmao)
 3. Refine the risk calculation algo so that its actually good
     - Maybe expand DB such that it has data from past 5 years or smt and can identify trends to inform risk calc
     - Look into machine learning
+

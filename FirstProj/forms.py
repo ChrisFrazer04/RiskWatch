@@ -1,6 +1,6 @@
 from django import forms
 
-disease_choices = [('Malaria', 'Select a disease'), ('Rubella', 'Rubella'), ('Syphilis', 'Syphilis'), ('Tuberculosis', 'Tuberculosis'), ('Diphtheria', 'Diphtheria'), ('Malaria', 'Malaria'), ('HIV', 'HIV'), ('Japanese encephalitis', 'Japanese encephalitis'), ('Leprosy', 'Leprosy'), ('Measles', 'Measles'), ('Mumps', 'Mumps'), ('Cutaneous leishmaniasis', 'Cutaneous leishmaniasis'), ('Visceral leishmaniasis', 'Visceral leishmaniasis'), ('Buruli ulcer', 'Buruli ulcer'), ('T.b. gambiense', 'T.b. gambiense'), ('T.b. rhodesiense', 'T.b. rhodesiense'), ('Pertussis', 'Pertussis'), ('Yellow Fever', 'Yellow Fever') ]
+disease_choices = [('Select a disease', 'Select a disease'), ('Rubella', 'Rubella'), ('Syphilis', 'Syphilis'), ('Tuberculosis', 'Tuberculosis'), ('Diphtheria', 'Diphtheria'), ('Malaria', 'Malaria'), ('HIV', 'HIV'), ('Japanese encephalitis', 'Japanese encephalitis'), ('Leprosy', 'Leprosy'), ('Measles', 'Measles'), ('Mumps', 'Mumps'), ('Cutaneous leishmaniasis', 'Cutaneous leishmaniasis'), ('Visceral leishmaniasis', 'Visceral leishmaniasis'), ('Buruli ulcer', 'Buruli ulcer'), ('T.b. gambiense', 'T.b. gambiense'), ('T.b. rhodesiense', 'T.b. rhodesiense'), ('Pertussis', 'Pertussis'), ('Yellow Fever', 'Yellow Fever') ]
 class DistanceInput(forms.Form):
     location1 = forms.CharField(max_length=200)
     location2 = forms.CharField(max_length=200)

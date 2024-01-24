@@ -106,50 +106,102 @@ display: none
 
 /*Controls google map size/dimensions*/
 #map {
-  height: 45vh;
-  width: 60vh;
+  width: 50vw;
+  height: 50vh;
   margin: 0 auto;
   margin-bottom: 2vh;
   border: 2px solid #000;
 }
 
+#bottomDivider {
+display: none;
+}
+
 /*Controls the graph and risk result text*/
 .risk-result {
-  text-align: center;
+  justify-content: center;
   font-size: 2rem;
   font-weight: bold;
-  margin-bottom: 1.25%;
-  display: none;
+  margin: 0 auto;
+  margin-bottom: 0.3%;
+}
+#riskLevel {
+    margin-left: 0.2em;
 }
 .graph-div {
-display: none;
 border: 4px solid 'black';
 }
 .graph {
 min-width: 600px;
-  width: 55vw;
+  width: 50vw;
   margin: 0 auto;
   margin-bottom: 1%;
   background-color: '#abfeda';
-  height: 55vh;
-  display: none;
+  height: calc(var(--width) * 1.5);
   border: 2px solid #000;
 }
-.percentile {
+
+#supportedText {
+    font-size: 1.7rem;
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 0.5%;
+    margin-top: 0.3%;
+    justify-content: center;
+}
+
+.bordered {
+    border: 2px solid #82858B;
+    border-radius: 5px;
+    width: 60vw;
+    margin: 0 auto;
+    margin-bottom: 5vh;
+    padding-top: .5vh;
+    padding-bottom: 1vh;
+}
+
+.detailedHeader {
+    font-size: 1.6rem;
+    margin-bottom: 0.1%;
+    font-weight: bold;
+}
+
+#percentile, #factors {
   font-size: 1.4rem;
   text-align: center;
-  width: 60%;
+  width: 50vw;
   margin: 0 auto;
-
+  margin-bottom: 1%;
 }
-.results-detailed {
-display: none;
+
+#detailedToggle, #supportedToggle{
+    margin: 0 auto;
+    padding: 5px;
+    background-color:#F6F6F6;
+    border: none;
+    justify-content: center;
+}
+#detailedToggle:hover, #supportedToggle:hover {
+    color: #551799;
+}
+#results-detailed {
+display: flex;
 justify-content: center;
 align-items: center;
 flex-direction: column;
 }
+
 #detailed-dropdown {
   font-size: 1.6rem;
+}
+
+#reference a {
+    font-size: 1.3rem;
+    color: rgb(16,27,147);
+}
+/*Hidden elements */
+#hidden, .hidden, #detailedToggle, #supportedToggle, .graph-div, .graph, .risk-result, #location-input, #supportedToggle{
+    display: none
 }
 
 /*Footer */

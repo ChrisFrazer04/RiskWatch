@@ -49,6 +49,7 @@ def calculate_risk(country, disease, location_data):
         else: return None
     df['incidence'] = df.apply(most_recent, axis=1)
     nonzero_incidences = df.loc[df['incidence'] > 0]['incidence'].values.tolist()
+    nonzero_incidences.sort()
     incidence = df.loc[df['country_name'] == country]['incidence'].values[0]
     median = np.median(nonzero_incidences)
     results = {}
@@ -65,31 +66,31 @@ def calculate_risk(country, disease, location_data):
                 incidence = incidence * 1.05
                 if location_data['large'] == 0:
                     incidence = incidence * 1.05
-        if incidence >= median * 8:
+        magnitude = incidence / median
+        if magnitude >= 4:
             risk = 'Very High'
-        elif incidence >= median * 4:
+        elif magnitude >= 2:  # (4,2)
             risk = 'High'
-        elif incidence >= median * 2:
+        elif magnitude >= 1 / 2:  # (1/2,2)
             risk = 'Moderate'
-        elif incidence >= median / 2:
+        elif magnitude >= 1 / 4:  # (1/4,1/2)
             risk = 'low'
-        elif incidence >= median / 4:
+        elif magnitude < 1 / 4:  # (0, 1/4)
             risk = 'Very low'
-        elif incidence < median / 4:
-            risk = 'Minimal'
         risk_text = 'Risk: {}'.format(risk)
         text = f'{country} has the {final}th highest {disease} incidence rate out of {len(nonzero_incidences)} countries with reported {disease} cases '
         results['text'] = text
         results['risk'] = risk_text
         results['magnitude'] = incidence / median
         results['factors'] = 'Factors accounted for: Hospital Density'
-        results['graph'] = self.get_graph(dis, disease)
+        #results['graph'] = self.get_graph(dis, disease)
+
     print(results)
     return results
 
 def run():
-    country = 'Kenya'
-    disease = 'Malaria'
+    country = 'Democratic Republic of the Congo'
+    disease = 'HIV'
     locationdata = {
         'large': 1,
         'small': 1,

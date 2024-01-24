@@ -37,18 +37,23 @@
         <input type="submit" value="Calculate" id='submitButton'>
       </div>
     </form>
-    <hr>
+    <hr id="bottomDivider">
     <section class='results-main'>
-    <div class='risk-result' id="risk-result"><p>{{ risk }}</p></div>
-      <!--old div: <div class='graph' id='graph'></div>  -->
+      <!-- {{ risk }} -->
+      <div class='risk-result' id="risk-result"><span id="riskColon">Risk:</span><p id="riskLevel">{{ risk }}</p></div>
+      <button id="supportedToggle" class="closed">Supported Countries &#x25BE; </button>
       <div class="graph-div" id="graph-div"><img src='data:image/png;base64,{{ graph }}' class='graph' id='graph'></div>
-      <p class='percentile'>{{ text }}</p>
     </section>
-    <section class='results-detailed' id="results-detailed">
-      <p id='detailed-dropdown'>
-        Detailed Analysis:
-      </p>
-      <p id='factors'>{{ factors }}</p>
+    <button id="detailedToggle" class="closed">Detailed Analysis: &#x25BE; </button>
+    <section class='hidden' id="results-detailed">
+      <p class="detailedHeader hidden" id="percentileHeader">Relative rank:</p>
+      <!-- {{ percentile }} {{ supported }} -->
+      <p class='hidden' id="percentile">{{ percentile }} {{ supported }}</p>
+      <p class="detailedHeader hidden" id="factorHeader">Location-specific factors:</p>
+      <!-- {{ factors }} -->
+      <p id='factors' class="hidden">{{ factors }}</p>
+      <p id="reference" class="hidden"><a href="{{ reference }}" target="_blank">Learn more about {{ disease }}</a></p>
+      <!-- {{ show }} -->
       <!--This p element is updated once post data received, when inner text == 'show', hidden divs are shown -->
       <p id="hidden">{{ show }}</p>
     </section>

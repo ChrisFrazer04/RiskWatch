@@ -10,8 +10,8 @@ import numpy as np
 
 
 def run():
-    disease = 'Malaria'
-    country_name = 'Kenya'
+    disease = 'HIV'
+    country_name = 'Democratic Republic of the Congo'
     query = Disease.objects.all()
     qs2 = Disease.objects.get(disease_name=disease)
     data = BaselineData.objects.filter(Q(disease=qs2)).values()

@@ -9,7 +9,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('FirstProj/', include('FirstProj.urls')),
     path('<str:id>', views.index, name='stringpage'),
-    path('', views.home, name='homepage'),
+    path('', views.Risk_Calculator.as_view(), name='RiskCalculator'),
     path("__debug__/", include("debug_toolbar.urls")),
 
 ]
