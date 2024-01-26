@@ -121,7 +121,7 @@ class Risk_Calculator(TemplateView):
       elif magnitude >= 1 / 4:  # (1/4,1/2)
         risk = 'Low'
       elif magnitude < 1 / 4:  # (0, 1/4)
-        risk = 'Very low'
+        risk = 'Very Low'
       risk_text = '{}'.format(risk)
       if final >=10 and final < 20:
         text = f'{country} has the {final}th highest {disease} incidence rate out of {len(nonzero_incidences)} countries with reported {disease} cases'
