@@ -10,6 +10,6 @@
 10.pip install django-pandas
 11.pip install requests
 12. pip install whitenoise
-
+13.
 
 
