@@ -1,11 +1,4 @@
 from FirstProj.models import Disease
-import sqlite3
-import requests
-import time
-import csv
-import math
-import urllib
-from FirstProj.AppCode.GMAPS_API import gapi_request
 from FirstProj.models import Baseline
 
 def create(disease, code, name):

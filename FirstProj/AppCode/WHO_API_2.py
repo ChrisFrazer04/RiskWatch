@@ -35,30 +35,6 @@ class api_request:
         ind_df = pd.json_normalize(output['json']['value'])
         return ind_df
 
-class sql_req(api_request):
-    def __init__(self):
-        self.connect()
-
-    def connect(self):
-        global conn
-        conn = sqlite3.connect('C:\\Users\\cflor\\PycharmProjects\\FCC\\WHO_API_DB.sqlite')
-        # conn = sqlite3.connect(input('Input Database file') + '.sqlite')
-        global cur
-        self.cur = conn.cursor()
-        cur = self.cur
-        return
-
-class Table(sql_req):
-    def __init__(self, name):
-        self.name = name
-        self.connect()
-
-    def create_table(self, sql_string):
-        cur.execute(sql_string)
-        cur.commit()
-
-    def create_data_table(self, disease='', ):
-        return
 
 
 #contains_example = 'https://ghoapi.azureedge.net/api/Indicator' + "?$filter=contains(IndicatorName, 'HIV')"

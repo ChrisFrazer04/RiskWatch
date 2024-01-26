@@ -11,6 +11,8 @@ class gapi_request:
         self.api_key = 'AIzaSyAkqT5NcD8JHNfdPqy2iVWqkLDv9Kl208A'
 
     def make_request_gmaps(self, address):
+        """Makes a google maps API call based on latitude,longitude location inputs.
+        creates class variables of the text response and json response"""
         params = {}
         params['key'] = self.api_key
         params['latlng'] = address
@@ -22,6 +24,7 @@ class gapi_request:
         return self.text
 
     def get_stats(self):
+        """Returns information about the input location such as its address, country, and zip code"""
         dta = self.rawjs
         stats = {}
         try:
@@ -58,18 +61,23 @@ class gapi_request:
                 if item == 'country':
                     stats['country_data'] = thing
         return stats
+
     def get_coordinates(self):
+        """returns latitude, longitude as a float"""
         data = self.rawjs
         data = data['results'][0]
         lat = data['geometry']['location']['lat']
         lng = data['geometry']['location']['lng']
         return [float(lat), float(lng)]
+
     def get_coordinates_text(self):
+        """returns latitude, longitude as a string"""
         data = self.rawjs
         data = data['results'][0]
         lat = data['geometry']['location']['lat']
         lng = data['geometry']['location']['lng']
         return str(lat) + ',' + str(lng)
+
     def get_address(self):
         """Returns the country name and formatted address"""
         locale = self.get_stats()
@@ -77,7 +85,9 @@ class gapi_request:
         results['country'] = locale['country_data']['long_name']
         results['address'] = locale['address']
         return results
+
     def calc_distance(self, address, target):
+        """Calculates the distance between address and target"""
         self.make_request_gmaps(address)
         var_name = self.another('var_name')
         var_name.make_request_gmaps(target)
@@ -101,10 +111,15 @@ class gapi_request:
             return km
         distance = haversine_formula(lat1, lng1, lat2, lng2)
         return distance
+
     def another(self, name):
         name = gapi_request()
         return name
+
     def search_nearby(self, location, radius_meters, type, keyword=None):
+        """Conducts a search around the location using the Google Maps API. returns locations
+        which have a type matching the inputted type, and keywords matching the input keywords.
+        Returns the number of found matches per 1000 meters (density) as well as location data"""
         #https://developers.google.com/maps/documentation/places/web-service/search-nearby#maps_http_places_nearbysearch-py
         self.make_request_gmaps(location)
         #location2 = self.get_coordinates_text()

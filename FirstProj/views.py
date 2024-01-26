@@ -12,12 +12,6 @@ from io import BytesIO
 from django_pandas.io import read_frame
 from django.db.models import Q
 from FirstProj.models import Country
-import json
-import urllib.request
-import urllib.parse
-import requests
-import sqlite3
-import math
 import numpy as np
 # Create your views here.
 
@@ -125,7 +119,7 @@ class Risk_Calculator(TemplateView):
       elif magnitude >= 1 / 2:  # (1/2,2)
         risk = 'Moderate'
       elif magnitude >= 1 / 4:  # (1/4,1/2)
-        risk = 'low'
+        risk = 'Low'
       elif magnitude < 1 / 4:  # (0, 1/4)
         risk = 'Very low'
       risk_text = '{}'.format(risk)
