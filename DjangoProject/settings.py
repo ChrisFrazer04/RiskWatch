@@ -24,9 +24,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-o6h!@tp11_$#ooo)2n83zig%i)@4t_^ch#-b4#6lxnazumv4=^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '.herokuapp.com',
+]
 
 
 # Application definition
@@ -146,3 +148,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #STATICFILES_DIRS = [
 #    BASE_DIR / 'static'
 #]
+
+import django_heroku
+django_heroku.settings(locals())
