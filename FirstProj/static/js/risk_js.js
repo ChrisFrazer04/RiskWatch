@@ -18,10 +18,6 @@ var supportedToggle = document.getElementById('supportedToggle')
 var percentile = document.getElementById('percentile')
 var percentileHeader = document.getElementById('percentileHeader')
 var factorHeader = document.getElementById('factorHeader')
-//Insert maps API key (In progress)
-//mapScript.addEventListener('DOMContentLoaded', function () {
-//  mapScript.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyAkqT5NcD8JHNfdPqy2iVWqkLDv9Kl208A&callback=initMap"
-//});
 
 //Functions
 function showHidden() {
