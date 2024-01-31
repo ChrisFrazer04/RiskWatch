@@ -8,7 +8,7 @@ import math
 class gapi_request:
     def __init__(self):
         self.serviceurl = 'https://maps.googleapis.com/maps/api/geocode/json?'
-        self.api_key = 'AIzaSyAkqT5NcD8JHNfdPqy2iVWqkLDv9Kl208A'
+        self.api_key = 'INSERT API KEY'
 
     def make_request_gmaps(self, address):
         """Makes a google maps API call based on latitude,longitude location inputs.
